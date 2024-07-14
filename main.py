@@ -27,3 +27,11 @@ class TermNode():
         self.operator = operator
         self.right = right
 
+    def evaluate(self):
+        if not self.operator:
+            return self.left.evaluate()
+        elif self.operator == '*':
+            return self.left.evaluate() * self.right.evaluate()
+        elif self.operator == '/':
+            return self.left.evaluate() / self.right.evaluate()
+
