@@ -1,0 +1,2 @@
+Please just run this example by running python3 Andrew_Gyakobo_ag78_homework11.py
+It will prompt you for an expression, and if no expression is provided, it'll then deliver its own: 5 + 3 * 8
