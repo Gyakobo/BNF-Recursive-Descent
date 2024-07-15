@@ -23,4 +23,18 @@ For example, the BNF for arithmetic expressions might look like this:
 
 In this BNF, an `<expression>` can be a `<term>` followed by + and another `<expression>`, or a `<term>` followed by - and another `<expression>`, or just a `<term>`. A `<term>` can be a `<factor>` followed by * and another `<term>`, and so on. This recursive definition allows complex expressions to be built from simpler components.
 
+[Recursive Descent Parsing](https://en.wikipedia.org/wiki/Recursive_descent_parser) is a top-down parsing technique that uses a set of recursive functions to process the input string and build a parse tree according to the grammar defined by the BNF. Each non-terminal symbol in the BNF corresponds to a function in the parser. These functions call each other recursively to parse the input and build the syntax tree.
+
+For example, given the BNF rules above, a recursive descent parser would have functions like `parse_expression`, `parse_term`, `parse_factor`, and `parse_operand`. Each function is responsible for parsing its corresponding non-terminal symbol.
+
+### Example
+
+Here is a simple example of how recursive descent parsing works:
+
+1. *parse_expression*: This function would try to parse a `<term>`, then check if there is a `+` or `-` operator, and if so, recursively parse another `<expression>`.
+
+1. *parse_term*: This function would try to parse a `<factor>`, then check if there is a `*` or `/` operator, and if so, recursively parse another `<term>`.
+
+
+
 
