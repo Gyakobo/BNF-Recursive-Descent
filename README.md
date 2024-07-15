@@ -35,6 +35,10 @@ Here is a simple example of how recursive descent parsing works:
 
 1. *parse_term*: This function would try to parse a `<factor>`, then check if there is a `*` or `/` operator, and if so, recursively parse another `<term>`.
 
+1. *parse_factor*: This function would check if the input starts a `(`, and if so, recursively parse an `<expression>` inside the parentheses. If not, it would try to parse an `<operand>`.
+
+1. *parse_operand*: This function would simply check if the current character is a digit and return it as an operand.
+
 
 
 
