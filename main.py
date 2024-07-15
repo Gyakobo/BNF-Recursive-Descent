@@ -1,5 +1,5 @@
 '''
-The overall BNF:
+The overall BNF and Parse Tree Description:
 
 <expression>  ::=  <term>  + <expression>   |   <term>  -  <expression>   |   <term>
 <term>  :=  <factor> * <term> | <factor> / <term> | <factor>
@@ -108,8 +108,14 @@ def expression_evaluation(input_string):
     tree = parser.parse_expression()
     return tree.evaluate()
 
-# Usage 
-input_string = "5 + 3 * 8" # Ans: 29 
+# Usage
+
+input_string = input("Please enter expression: ")
+
+if not input_string: 
+    input_string = "5 + 3 * 8" # Ans: 29
+print(end="\n\n")
+
 result = expression_evaluation(input_string)
 print(f'Input Expression: {input_string}')
 print(f'Result: {result}')
