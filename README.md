@@ -142,8 +142,83 @@ class OperandNode:
 * FactorNode: Represents a factor which could be an expression in parentheses or an operand.
 
 ```python
+class FactorNode:
+    def __init__(self, child):
+        self.child = child
 
+    def evaluate(self):
+        return self.child.evaluate()
+```
 
+* TermNode: Represents a term which is s product or quotient of factors.
+
+```python
+class TermNode:
+    def __init__(self, left, operator=None, right=None):
+        self.left = left
+        self.operator = operator
+        self.right = right
+
+    def evaluate(self):
+        if not self.operator:
+            return self.left.evaluate()
+        elif self.operator == '*':
+            return self.left.evaluate() * self.right.evaluate()
+        elif self.operator == '/':
+            return self.left.evaluate() / self.right.evaluate()
+```
+
+* ExpressionNode: Represents an expression which is a sum or difference of terms:
+
+```python
+class ExpressionNode:
+    def __init__(self, left, operator=None, right=None):
+        self.left = left
+        self.operator = operator
+        self.right = right
+
+    def evaluate(self):
+        if not self.operator:
+            return self.left.evaluate()
+        elif self.operator == '+':
+            return self.left.evaluate() + self.right.evaluate()
+        elif self.operator == '-':
+            return self.left.evaluate() - self.right.evaluate()
+```
+
+4. Evaluating the Expression:
+
+The `evaluate_expression` function constructs the expression tree and evaluates it.
+
+```python
+def evaluate_expression(input_string):
+    parser = Parser(input_string)
+    tree = parser.parse_expression()
+    return tree.evaluate()
+```
+
+5. Command-line Input:
+
+The script uses the `argparse` module to handle command-line input.
+
+```python
+import argparse
+
+def main():
+    parser = argparse.ArgumentParser(description="Evaluate an arithmetic expression.")
+    parser.add_argument("expression", type=str, help="Arithmetic expression to evaluate")
+    args = parser.parse_args()
+    result = evaluate_expression(args.expression)
+    print(f"Expression: {args.expression}")
+    print(f"Result: {result}")
+
+if __name__ == "__main__":
+    main()
+```
+
+## Conclusion
+
+This methodology describes the steps to parse and evaluate arithmetic expressions using recursive descent parsing based on BNF grammar. The implementation includes parsing functions for expressions, terms, factors, and operands, constructing and expression tree, and evaluating the tree to obtain the result. The project also handles command-line input for user-friendly operation.
 
 ## License
 MIT
