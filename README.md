@@ -128,7 +128,7 @@ def parse_operand(self):
 
 The parser constructs an expression tree with different types of nodes representing the components of the expression.
 
-* OperandNode: Represents an operan (integer).
+* OperandNode: Represents an operand (integer).
 
 ```python
 class OperandNode:
