@@ -45,7 +45,84 @@ Recursive descent parsing is straightforward to implement and understand, making
 
 ## Methodology
 
-This project 
+This project aims to parse and evaluate arithmetic expressions using recursive descent parsing based on BNF (Backus-Naur Form) grammar rules. The process involves defining a grammar, implementing a parser, constructing an expression tree, and evaluating the tree.
+
+1. *Defining the Grammar*:
+
+The BNF grammar for arithmetic expressions is defined as follows:
+
+```html
+<expression> ::= <term> + <expression> | <term> - <expression> | <term>
+<term> ::= <factor> * <term> | <factor> / <term> | <factor>
+<factor> ::= (<expression>) | <operand>
+<operand> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+```
+
+This grammar describes how complex arithmetic expressions can be built from simpler components.
+
+2. *Implementing the Parser*:
+
+The parser is implemented using recursive descent parsing. Each non-terminal symbol in the grammar corresponds to a function in the parser. 
+
+* Parser Class: Ther `Parser` class handles the parsing of the input string.
+
+```python
+class Parser:
+    def __init__(self, input_string):
+        self.input = input_string.replace(" ", "")
+        self.position = 0
+```
+
+* Parsing Expressions: The `parse_expression` function parses an `<expression>`.
+
+```python
+def parse_expression(self):
+    left = self.parse_term()
+    while self.current_char() in ('+', '-'):
+        operator = self.current_char()
+        self.advance()
+        right = self.parse_term()
+        left = ExpressionNode(left, operator, right)
+    return left
+```
+
+* Parsing Terms: The `parse_term` function parses a `<term>`.
+
+```python
+def parse_term(self):
+    left = self.parse_factor()
+    while self.current_char() in ('*', '/'):
+        operator = self.current_char()
+        self.advance()
+        right = self.parse_factor()
+        left = TermNode(left, operator, right)
+    return left
+```
+
+* Parsing Factors: The `parse_factor` function parses a `<factor>`
+
+```python
+def parse_factor(self):
+    if self.current_char() == '(':
+        self.advance()
+        expr = self.parse_expression()
+        if self.current_char() == ')':
+            self.advance()
+        return FactorNode(expr)
+    else:
+        return self.parse_operand()
+```
+
+* Parsing Operands: The `parse_operand` function parses an `<operand>`.
+
+```python
+def parse_operand(self):
+    start = self.position
+    while self.current_char() is not None and self.current_char().isdigit():
+        self.advance()
+    value = int(self.input[start:self.position])
+    return OperandNode(value)
+```
 
 ## License
 MIT
