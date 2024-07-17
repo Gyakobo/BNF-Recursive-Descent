@@ -6,7 +6,7 @@
 Author: [Andrew Gyakobo](https://github.com/Gyakobo)
 
 >[!NOTE]
->Please feel free to make pull requests and edit this project to your will.
+>Please feel free to make pull requests and edit this project to your will. As a matter of fact, oh dear reader, I'd be ecstatic if somebody pulls this branch and adds a byte-code version of this code in pure C.
 
 ## Introduction
 
