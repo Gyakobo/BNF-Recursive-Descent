@@ -14,7 +14,7 @@ Author: [Andrew Gyakobo](https://github.com/Gyakobo)
 
 For example, the BNF for arithmetic expressions might look like this:
 
-```php
+```html
 <expression> ::= <term> + <expression> | <term> - <expression> | <term>
 <term> ::= <factor> * <term> | <factor> / <term> | <factor>
 <factor> ::= (<expression>) | <operand>
@@ -123,6 +123,27 @@ def parse_operand(self):
     value = int(self.input[start:self.position])
     return OperandNode(value)
 ```
+
+3. *Constructing the Expression Tree*:
+
+The parser constructs an expression tree with different types of nodes representing the components of the expression.
+
+* OperandNode: Represents an operan (integer).
+
+```python
+class OperandNode:
+    def __init__(self, value):
+        self.value = value
+
+    def evaluate(self):
+        return self.value
+```
+
+* FactorNode: Represents a factor which could be an expression in parentheses or an operand.
+
+```python
+
+
 
 ## License
 MIT
