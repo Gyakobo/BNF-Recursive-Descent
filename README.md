@@ -39,7 +39,7 @@ Here is a simple example of how recursive descent parsing works:
 
 1. *parse_operand*: This function would simply check if the current character is a digit and return it as an operand.
 
-By following these steps, a recursive descent parser can build a tree structure that represents the syntactic structure of the input string. This tree can then be used to evaluate the expression, generate ocde, or perform other tasks.
+By following these steps, a recursive descent parser can build a tree structure that represents the syntactic structure of the input string. This tree can then be used to evaluate the expression, generate code, or perform other tasks.
 
 Recursive descent parsing is straightforward to implement and understand, making it a good choice for simple grammars. However, it may not be efficient for more complex grammars due to its potential for exponential time complexity in certain cases.
 
