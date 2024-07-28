@@ -14,7 +14,7 @@ Author: [Andrew Gyakobo](https://github.com/Gyakobo)
 
 For example, the BNF for arithmetic expressions might look like this:
 
-```console
+```html
 <expression> ::= <term> + <expression> | <term> - <expression> | <term>
 <term> ::= <factor> * <term> | <factor> / <term> | <factor>
 <factor> ::= (<expression>) | <operand>
